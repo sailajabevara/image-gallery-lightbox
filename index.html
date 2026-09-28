@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A responsive, accessible image gallery with a keyboard-friendly full-screen lightbox, built with vanilla HTML, CSS and JavaScript." />
+  <title>Light Table – Responsive Image Gallery</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#gallery-container">Skip to gallery</a>
+
+  <main id="main-content">
+    <header class="page-header">
+      <h1>Light Table</h1>
+      <p>Sixteen photographs. Select one to view it full screen, then use the arrow keys to move through the set.</p>
+    </header>
+
+    <section id="gallery-container" class="gallery-grid" aria-label="Photo gallery" aria-busy="true">
+      <!-- Thumbnails are injected by script.js -->
+    </section>
+
+    <p id="gallery-status" class="gallery-status" role="status" aria-live="polite">Loading photographs…</p>
+  </main>
+
+  <!-- Lightbox modal: lives outside <main>, at the end of <body> -->
+  <div id="lightbox-modal" class="lightbox lightbox-modal hidden" role="dialog" aria-modal="true" aria-label="Image gallery" aria-hidden="true">
+    <button id="lightbox-close" class="lightbox-btn lightbox-close" type="button" aria-label="Close dialog">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+
+    <div class="lightbox-content">
+      <button id="lightbox-prev" class="lightbox-btn lightbox-prev" type="button" aria-label="Previous image">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+
+      <img id="lightbox-image" class="lightbox-image" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Selected gallery image" />
+
+      <button id="lightbox-next" class="lightbox-btn lightbox-next" type="button" aria-label="Next image">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+
+    <div class="lightbox-footer">
+      <div id="lightbox-counter" class="lightbox-counter" aria-live="polite" aria-atomic="true"></div>
+      <div id="lightbox-author" class="lightbox-author"></div>
+    </div>
+  </div>
+</body>
+</html>
